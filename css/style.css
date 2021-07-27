@@ -1,0 +1,124 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  *, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    line-height: 0;
+    width: 10%;
+    z-index: 9;
+  }
+  .thumbnails li {
+    flex: auto;
+  }
+  .thumbnails a {
+    display: block;
+  }
+  .thumbnails img, .thumbnails video, .thumbnails a[download] {
+    width: 30vmin;
+    height: 20vmin;
+    /* object-fit: cover; */
+    object-position: top;
+    width: 100%;
+  }
+
+  a[download] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slides {
+    overflow: hidden;
+    width: 75vmin;
+    height: 100vmin;
+  }
+  .slides li {
+    width: 75vmin;
+    height: 100vmin;
+    position: fixed;
+    /* position: relative; */
+    z-index: 1;
+  }
+  .slides img, .slides video, .slides a {
+    height: 100vmin;
+    /* object-fit: cover; */
+    object-position: top;
+  }
+  .slides li:target {
+    z-index: 3;
+    -webkit-animation: slide 1s 1;
+  }
+  .slides li:not(:target) {
+    -webkit-animation: hidden 1s 1;
+  }
+
+  ul {
+      list-style-type: none;
+  }
+
+  .active {
+      transform: scale(1.1);
+  }
+
+  .slides li.image-active {
+      z-index: 3;
+      animation: slide 1s 1;
+  }
+
+  .slides li.no-image-active {
+    z-index: 2;
+    animation: hidden 3s 1 forwards;
+}
+
+  .container, .slides li, .slides li img, .slides li video {
+      width: 100%;
+  }
+
+  .slides {
+      width: 90%;
+  }
+
+  .slides li:last-child, .thumbnails li:last-child {
+      background-color: white;
+  } 
+
+  li video {
+    object-fit: fill;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+  @keyframes hidden {
+    0% {
+      z-index: 2;
+      transform: translateY(0%);
+    }
+    50% {
+        z-index: 2;
+        transform: translateY(100%);
+    }
+    100% {
+      z-index: 2;
+      transform: translateY(-100%);
+    }
+  }
+  
